@@ -1,0 +1,8 @@
+.footer-div{
+background-color: black;
+color:aliceblue;
+height:200px;
+display: flex;
+justify-content: center;
+align-items:center;
+}
