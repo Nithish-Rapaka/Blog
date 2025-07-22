@@ -39,7 +39,7 @@ function Attendance() {
   }
 
   function fetchStats() {
-    fetch(`http://localhost:3000/user/attendance/${userId}`)
+    fetch(`https://blog-backend-gktd.onrender.com/${userId}`)
       .then(res => res.json())
       .then(data => {
         if (data.percentage) {
