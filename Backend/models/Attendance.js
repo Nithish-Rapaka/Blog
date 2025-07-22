@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const attendanceSchema = new mongoose.Schema({
   userId: { type: String, required: true },              // track user
-  date: { type: String, required: true },                // use string (YYYY-MM-DD) for easier querying
+  date: { type: Date, required: true },                // use string (YYYY-MM-DD) for easier querying
   present: { type: Boolean, required: true }
 });
 
