@@ -6,7 +6,7 @@ function Attendance() {
   const [present, setPresent] = useState(null);
   const [stats, setStats] = useState(null);
 
-  const userId = 'user123'; // Replace with dynamic user if needed
+  const userId = 'Nithish'; // Replace with dynamic user if needed
 
   function submitAttendance(e) {
     e.preventDefault();
@@ -114,7 +114,13 @@ function Attendance() {
           <p>Present Days: {stats.presentDays}</p>
           <p><strong>Attendance Percentage: {stats.percentage}</strong></p>
           {stats.lastDate && (
-            <p>Last Entry Date: {new Date(stats.lastDate).toLocaleDateString()}</p>
+            <p>
+              📅 Last Entry Date: {new Date(stats.lastDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              })}
+            </p>
           )}
 
           <button
