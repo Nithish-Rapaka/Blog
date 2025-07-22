@@ -1,7 +1,5 @@
 import React from 'react'
 import './App.css'; 
-import Login from './pages/Login/Login'
-import Register from './pages/Registration/Register'
 import Home from './pages/Home/Home'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -19,8 +17,6 @@ function App()
       <Routes>
       <Route path='/Attendance'element={<Attendance/>}/>
       <Route path='/' element={<Home/>}/>
-      <Route path='/Login' element={<Login/>}/>
-      <Route path='Register' element={<Register/>}/>
       <Route path='/Blogs/:category' element={<CategoryBlog/>}/>
       <Route path='/Blog/:id' element={<DedicatedBlog/>}/>
       <Route path='/subjects' element={<BlogForm />} /> 

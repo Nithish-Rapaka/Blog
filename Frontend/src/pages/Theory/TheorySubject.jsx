@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './TheorySubjec.css';
 
 function SubjectManager() {
   const [year, setYear] = useState('');
@@ -168,9 +169,21 @@ function SubjectList({
 function LinkManager({ links, onAddLink, onDeleteLink }) {
   const [newLink, setNewLink] = useState('');
   const [newDesc, setNewDesc] = useState('');
+  const [showAddLinkForm, setShowAddLinkForm] = useState(false); // 👈 New state
+
+  const handleAdd = () => {
+    if (!newLink.trim() || !newDesc.trim()) {
+      alert('Enter both URL and description!');
+      return;
+    }
+    onAddLink(newLink, newDesc);
+    setNewLink('');
+    setNewDesc('');
+    setShowAddLinkForm(false); // 👈 Hide form after adding
+  };
 
   return (
-    <div>
+    <div className='body'>
       <h4>📄 PDFs</h4>
       {links.length === 0 ? (
         <p>No PDFs uploaded yet.</p>
@@ -188,22 +201,30 @@ function LinkManager({ links, onAddLink, onDeleteLink }) {
           ))}
         </ul>
       )}
-      <input
-        type="text"
-        placeholder="https://..."
-        value={newLink}
-        onChange={e => setNewLink(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={newDesc}
-        onChange={e => setNewDesc(e.target.value)}
-      />
-      <button onClick={() => {
-        onAddLink(newLink, newDesc);
-        setNewLink(''); setNewDesc('');
-      }}>+ Add Link</button>
+
+      {/* Add Link Toggle */}
+      {showAddLinkForm ? (
+        <>
+          <input
+            type="text"
+            placeholder="https://..."
+            value={newLink}
+            onChange={e => setNewLink(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            value={newDesc}
+            onChange={e => setNewDesc(e.target.value)}
+          />
+          <button onClick={handleAdd}>✅ Save Link</button>
+          <button onClick={() => setShowAddLinkForm(false)} style={{ marginLeft: '10px' }}>
+            ❌ Cancel
+          </button>
+        </>
+      ) : (
+        <button onClick={() => setShowAddLinkForm(true)}>+ Add Link</button>
+      )}
     </div>
   );
 }
