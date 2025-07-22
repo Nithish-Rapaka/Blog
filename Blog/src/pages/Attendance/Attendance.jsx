@@ -16,7 +16,7 @@ function Attendance() {
       return;
     }
 
-    fetch('https://blog-backend-gktd.onrender.com/user123', {
+    fetch('https://blog-backend-gktd.onrender.com/user/attendance', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -39,7 +39,7 @@ function Attendance() {
   }
 
   function fetchStats() {
-    fetch(`https://blog-backend-gktd.onrender.com/user123`)
+    fetch(`https://blog-backend-gktd.onrender.com/user/attendance/${userId}`)
       .then(res => res.json())
       .then(data => {
         if (data.percentage) {
@@ -53,7 +53,7 @@ function Attendance() {
 
   function deleteAllAttendance() {
     if (window.confirm("⚠️ Are you sure you want to delete ALL your attendance records? This cannot be undone.")) {
-      fetch(`https://blog-backend-gktd.onrender.com/user123`, {
+      fetch(`https://blog-backend-gktd.onrender.com/user/attendance/${userId}`, {
         method: 'DELETE'
       })
         .then(res => res.json())
@@ -115,7 +115,6 @@ function Attendance() {
           <p>Present Days: {stats.presentDays}</p>
           <p><strong>Attendance Percentage: {stats.percentage}</strong></p>
 
-          {/* ✅ Delete All Attendance Button */}
           <button
             className="delete-btn"
             onClick={deleteAllAttendance}
