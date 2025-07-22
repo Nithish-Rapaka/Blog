@@ -30,7 +30,7 @@ function Attendance() {
         alert(data.message || "Attendance recorded.");
         setSelectedDate('');
         setPresent(null);
-        fetchStats(); // Fetch updated stats after submission
+        fetchStats(); // Refresh stats after submission
       })
       .catch(err => {
         console.error(err);
@@ -59,7 +59,7 @@ function Attendance() {
         .then(res => res.json())
         .then(data => {
           alert(data.message || "All attendance data deleted.");
-          setStats(null); // Clear stats in frontend
+          setStats(null);
         })
         .catch(err => {
           console.error("Delete all attendance failed", err);
@@ -68,7 +68,6 @@ function Attendance() {
     }
   }
 
-  // Load stats once when component mounts
   useEffect(() => {
     fetchStats();
   }, []);
@@ -114,6 +113,9 @@ function Attendance() {
           <p>Total Days: {stats.totalDays}</p>
           <p>Present Days: {stats.presentDays}</p>
           <p><strong>Attendance Percentage: {stats.percentage}</strong></p>
+          {stats.lastDate && (
+            <p>Last Entry Date: {new Date(stats.lastDate).toLocaleDateString()}</p>
+          )}
 
           <button
             className="delete-btn"
