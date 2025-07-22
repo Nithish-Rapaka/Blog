@@ -59,26 +59,30 @@ app.post('/user/attendance', async (req, res) => {
 });
 
 // ✅ Attendance API: Get attendance stats
-app.get('/user/attendance/:userId', async (req, res) => {
+// ✅ Attendance API: Get attendance stats + last entry date
+  app.get('/user/attendance/:userId', async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const records = await Attendance.find({ userId });
+    const records = await Attendance.find({ userId }).sort({ date: -1 });
 
     const totalDays = records.length;
     const presentDays = records.filter(r => r.present === true).length;
     const percentage = totalDays > 0 ? ((presentDays / totalDays) * 100).toFixed(2) : 0;
+    const lastDate = records[0]?.date || null; // Get most recent date
 
     res.status(200).json({
       totalDays,
       presentDays,
-      percentage: `${percentage}%`
+      percentage: `${percentage}%`,
+      lastDate
     });
   } catch (err) {
     console.error('❌ Attendance stats error:', err);
     res.status(500).json({ message: 'Failed to fetch attendance stats.' });
   }
 });
+
 
 // ✅ Attendance API: Delete all attendance records for a user
 app.delete('/user/attendance/:userId', async (req, res) => {
