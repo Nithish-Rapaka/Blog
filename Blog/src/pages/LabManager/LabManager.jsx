@@ -6,7 +6,7 @@ function LabsManager() {
   const [semester, setSemester] = useState('');
   const [labs, setLabs] = useState([]);
   const [newLab, setNewLab] = useState('');
-  const apiBase = 'http://localhost:3000'; // Your backend URL
+  const apiBase = 'https://blog-backend-gktd.onrender.com'; // Your backend URL
 
   // Fetch labs for selected year & semester
   useEffect(() => {
