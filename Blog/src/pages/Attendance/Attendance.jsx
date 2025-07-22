@@ -16,7 +16,7 @@ function Attendance() {
       return;
     }
 
-    fetch('https://blog-backend-gktd.onrender.com', {
+    fetch('https://blog-backend-gktd.onrender.com/user123', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ function Attendance() {
 
   function deleteAllAttendance() {
     if (window.confirm("⚠️ Are you sure you want to delete ALL your attendance records? This cannot be undone.")) {
-      fetch(`http://localhost:3000/user/attendance/${userId}`, {
+      fetch(`https://blog-backend-gktd.onrender.com/user123`, {
         method: 'DELETE'
       })
         .then(res => res.json())
