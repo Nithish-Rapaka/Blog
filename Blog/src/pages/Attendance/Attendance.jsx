@@ -16,7 +16,7 @@ function Attendance() {
       return;
     }
 
-    fetch('http://localhost:3000/user/attendance', {
+    fetch('https://blog-backend-gktd.onrender.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
