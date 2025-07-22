@@ -26,7 +26,7 @@ function Login() {
         setError(''); // Clear previous error
 
         try {
-            const res = await fetch('http://localhost:3000/user/login', {
+            const res = await fetch('https://blog-backend-gktd.onrender.com', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
