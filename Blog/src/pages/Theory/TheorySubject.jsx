@@ -7,7 +7,7 @@ function SubjectManager() {
   const [semester, setSemester] = useState('');
   const [subjects, setSubjects] = useState([]);
   const [newSubject, setNewSubject] = useState('');
-  const apiBase = 'http://localhost:3000'; // Backend URL
+  const apiBase = 'https://blog-backend-gktd.onrender.com'; // Backend URL
 
   useEffect(() => {
     if (year && semester) fetchSubjects();
