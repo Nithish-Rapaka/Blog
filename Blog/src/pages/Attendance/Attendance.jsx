@@ -122,22 +122,6 @@ function Attendance() {
               })}
             </p>
           )}
-
-          <button
-            className="delete-btn"
-            onClick={deleteAllAttendance}
-            style={{
-              backgroundColor: '#ff4d4d',
-              color: '#fff',
-              border: 'none',
-              padding: '10px 15px',
-              marginTop: '10px',
-              borderRadius: '5px',
-              cursor: 'pointer'
-            }}
-          >
-            🗑️ Delete All Attendance
-          </button>
         </div>
       )}
     </div>
